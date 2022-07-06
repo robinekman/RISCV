@@ -62,9 +62,6 @@
    $rd_valid = $is_r_instr || $is_i_instr || $is_u_instr || $is_j_instr;
    $imm_valid = $is_i_instr || $is_s_instr || $is_b_instr || $is_u_instr || $is_j_instr;
    
-   // Ignoring errors for dangling logic
-   `BOGUS_USE($funct3 $rs2 $rs1 $rd $opcode $rs2_valid $rs1_valid $imm_valid $rd_valid) 
-   
    // Decoding immediates
    $imm[31:0] = $is_i_instr ? { {21{$instr[31]}}, $instr[30:20] } :
                 $is_s_instr ? { {21{$instr[31]}}, $instr[30:25], $instr[11:8], $instr[7] } :
